@@ -4,12 +4,29 @@ This is a template repository for creating new WooCommerce POS gateway plugins.
 
 ## Using this Template
 
-### Option 1: GitHub Template (Recommended)
+### Option 1: Automated Script (Recommended) ✨
+
+The easiest way to create a new gateway is using the included automation script:
+
+1. Clone this repository
+2. Run the generator script:
+   ```bash
+   ./create-gateway.sh
+   ```
+3. Follow the prompts to enter your gateway details
+4. The script will automatically:
+   - Replace all placeholders with your values
+   - Create the properly named plugin file
+   - Set up your new gateway in a directory of your choice
+
+### Option 2: GitHub Template (Manual Setup)
+
+If you prefer to use GitHub's template feature:
 
 1. Click the "Use this template" button at the top of this repository
 2. Enter your new repository name
 3. Clone your new repository
-4. Replace the placeholders in the files:
+4. **Manually** replace all placeholders in the files:
    - `{{GATEWAY_NAME}}` - Your gateway name (e.g., "Cash Payment")
    - `{{GATEWAY_SLUG}}` - Your gateway slug (e.g., "cash-payment")
    - `{{GATEWAY_DESCRIPTION}}` - Your gateway description
@@ -23,15 +40,7 @@ This is a template repository for creating new WooCommerce POS gateway plugins.
 
 5. Rename `wcpos-{{GATEWAY_SLUG}}.php` to match your gateway slug
 
-### Option 2: Shell Script
-
-1. Clone this repository
-2. Run the generator script:
-   ```bash
-   ./create-gateway.sh
-   ```
-3. Follow the prompts to enter your gateway details
-4. The script will create a new gateway in your specified directory
+**Note:** This method requires manual find-and-replace in your editor for all placeholders.
 
 ## Template Structure
 
