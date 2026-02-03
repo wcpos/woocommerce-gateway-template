@@ -1,14 +1,14 @@
 #!/bin/bash
 
-# WooCommerce POS Gateway Generator Script
-# This script creates a new WooCommerce POS gateway plugin from the template
+# WCPOS Gateway Generator Script
+# This script creates a new WCPOS gateway plugin from the template
 
 set -e
 
 SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
 
 echo "==================================="
-echo "WooCommerce POS Gateway Generator"
+echo "WCPOS Gateway Generator"
 echo "==================================="
 echo ""
 

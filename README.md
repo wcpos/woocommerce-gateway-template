@@ -1,6 +1,6 @@
-# WooCommerce POS Gateway Template
+# WCPOS Gateway Template
 
-This is a template repository for creating new WooCommerce POS gateway plugins.
+This is a template repository for creating new WCPOS gateway plugins.
 
 ## Using this Template
 
@@ -53,7 +53,7 @@ If you prefer to use GitHub's template feature:
 ## Features
 
 - Simple "hello world" gateway structure
-- WooCommerce POS compatibility (gateway only enabled in POS)
+- WCPOS compatibility (gateway only enabled in POS)
 - Automated GitHub releases when version changes
 - Internationalization support
 - Clean, minimal code structure

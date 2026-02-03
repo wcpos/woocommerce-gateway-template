@@ -14,7 +14,7 @@ echo ""
 # Example values
 GATEWAY_NAME="Cash Payment"
 GATEWAY_SLUG="cash-payment"
-GATEWAY_DESCRIPTION="Accept cash payments in WooCommerce POS"
+GATEWAY_DESCRIPTION="Accept cash payments in WCPOS"
 GATEWAY_DEFAULT_DESCRIPTION="Pay with cash at the point of sale"
 GITHUB_USERNAME="kilbot"
 REPO_NAME="cash-payment-gateway"

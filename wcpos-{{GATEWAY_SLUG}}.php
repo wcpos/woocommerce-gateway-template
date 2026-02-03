@@ -2,7 +2,7 @@
 defined( 'ABSPATH' ) || exit;
 
 /**
- * Plugin Name: WooCommerce POS {{GATEWAY_NAME}} Gateway
+ * Plugin Name: WCPOS {{GATEWAY_NAME}} Gateway
  * Plugin URI: https://github.com/{{GITHUB_USERNAME}}/{{REPO_NAME}}
  * Description: {{GATEWAY_DESCRIPTION}}
  * Version: 0.1.0
@@ -49,7 +49,7 @@ function woocommerce_pos_{{GATEWAY_FUNCTION_PREFIX}}_gateway_init() {
 			$this->title       = $this->get_option( 'title' );
 			$this->description = $this->get_option( 'description' );
 
-			// Disabled for web checkout; WooCommerce POS enables it via its own settings.
+			// Disabled for web checkout; WCPOS enables it via its own settings.
 			$this->enabled = 'no';
 
 			// Actions
