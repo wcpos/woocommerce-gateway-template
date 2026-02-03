@@ -1,13 +1,18 @@
 <?php
+defined( 'ABSPATH' ) || exit;
+
 /**
  * Plugin Name: WooCommerce POS {{GATEWAY_NAME}} Gateway
  * Plugin URI: https://github.com/{{GITHUB_USERNAME}}/{{REPO_NAME}}
  * Description: {{GATEWAY_DESCRIPTION}}
- * Version: 0.0.1
+ * Version: 0.1.0
  * Author: {{AUTHOR_NAME}}
  * License: GNU General Public License v3.0
  * License URI: http://www.gnu.org/licenses/gpl-3.0.html
  * Text Domain: woocommerce-pos-{{GATEWAY_SLUG}}-gateway
+ * Requires at least: 5.6
+ * Requires PHP: 7.4
+ * WC requires at least: 5.0
  */
 
 add_action( 'plugins_loaded', 'woocommerce_pos_{{GATEWAY_FUNCTION_PREFIX}}_gateway_init', 0 );
@@ -44,8 +49,8 @@ function woocommerce_pos_{{GATEWAY_FUNCTION_PREFIX}}_gateway_init() {
 			$this->title       = $this->get_option( 'title' );
 			$this->description = $this->get_option( 'description' );
 
-			// only allow in the POS
-			$this->enabled = false;
+			// Disabled for web checkout; WooCommerce POS enables it via its own settings.
+			$this->enabled = 'no';
 
 			// Actions
 			add_action( 'woocommerce_update_options_payment_gateways_' . $this->id, array( $this, 'process_admin_options' ) );
@@ -69,24 +74,16 @@ function woocommerce_pos_{{GATEWAY_FUNCTION_PREFIX}}_gateway_init() {
 			);
 		}
 
-		public function payment_fields() {
-			echo wpautop( wptexturize( $this->description ) );
-			// Add any custom payment fields here
-		}
+		// To add custom payment fields in the POS checkout, override the
+		// payment_fields() method. See the WooCommerce docs for details.
 
 		public function process_payment( $order_id ) {
 			$order = wc_get_order( $order_id );
 
-			// Mark as on-hold (we're awaiting the payment)
-			$order->update_status( 'on-hold', __( 'Awaiting payment', 'woocommerce-pos-{{GATEWAY_SLUG}}-gateway' ) );
+			// Mark the order as paid.
+			// This handles stock reduction and order status automatically.
+			$order->payment_complete();
 
-			// Reduce stock levels
-			wc_reduce_stock_levels( $order_id );
-
-			// Remove cart
-			WC()->cart->empty_cart();
-
-			// Return thankyou redirect
 			return array(
 				'result'   => 'success',
 				'redirect' => $this->get_return_url( $order ),
