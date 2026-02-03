@@ -1,0 +1,26 @@
+name: Validate Template
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Run demo script
+        run: bash ./demo.sh
+
+      - name: Check for remaining placeholders
+        run: |
+          if grep -rP '(?<!\$)\{\{[A-Z_]+\}\}' demo-output/ --include="*.php" --include="*.yml" --include="*.md" --include="*.pot"; then
+            echo "ERROR: Unprocessed placeholders found"
+            exit 1
+          fi
+
+      - name: PHP syntax check
+        run: php -l demo-output/cash-payment-gateway/wcpos-cash-payment.php

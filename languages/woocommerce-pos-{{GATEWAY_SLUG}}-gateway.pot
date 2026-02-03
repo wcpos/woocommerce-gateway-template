@@ -2,7 +2,7 @@
 # This file is distributed under the GNU General Public License v3.0.
 msgid ""
 msgstr ""
-"Project-Id-Version: WooCommerce POS {{GATEWAY_NAME}} Gateway 0.0.1\n"
+"Project-Id-Version: WCPOS {{GATEWAY_NAME}} Gateway 0.1.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/woocommerce-pos-{{GATEWAY_SLUG}}-gateway\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -16,7 +16,7 @@ msgstr ""
 
 #. Plugin Name of the plugin
 #: wcpos-{{GATEWAY_SLUG}}.php
-msgid "WooCommerce POS {{GATEWAY_NAME}} Gateway"
+msgid "WCPOS {{GATEWAY_NAME}} Gateway"
 msgstr ""
 
 #. Plugin URI of the plugin

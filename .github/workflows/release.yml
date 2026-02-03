@@ -14,7 +14,7 @@ jobs:
 
     steps:
       - name: Checkout code
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
 
       - name: Check if version has changed
         id: check_version
@@ -24,29 +24,26 @@ jobs:
           git fetch --prune --unshallow
           if git tag | grep -q "v$VERSION"; then
             echo "Version has not changed. Skipping release..."
-            echo "::set-output name=release::false"
+            echo "release=false" >> $GITHUB_OUTPUT
           else
             echo "Version has changed. Creating new release..."
-            echo "::set-output name=release::true"
+            echo "release=true" >> $GITHUB_OUTPUT
           fi
+
+      - name: Build ZIP
+        if: steps.check_version.outputs.release == 'true'
+        run: |
+          zip -r "woocommerce-pos-{{GATEWAY_SLUG}}-gateway.zip" . \
+            -x "*.git*" \
+            -x "create-gateway.sh" \
+            -x "demo.sh" \
+            -x "PLUGIN_README.md" \
+            -x "demo-output/*"
 
       - name: Create Release
         if: steps.check_version.outputs.release == 'true'
-        id: create_release
-        uses: actions/create-release@v1
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        uses: softprops/action-gh-release@v2
         with:
           tag_name: v${{ env.VERSION }}
-          release_name: Release v${{ env.VERSION }}
-          draft: false
-          prerelease: false
-
-      - name: Build and upload ZIP
-        if: steps.check_version.outputs.release == 'true'
-        run: |
-          zip -r woocommerce-pos-{{GATEWAY_SLUG}}-gateway.zip . -x "*.git*"
-          gh release upload v${{ env.VERSION }} woocommerce-pos-{{GATEWAY_SLUG}}-gateway.zip --clobber
-        env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
+          name: Release v${{ env.VERSION }}
+          files: "woocommerce-pos-{{GATEWAY_SLUG}}-gateway.zip"
