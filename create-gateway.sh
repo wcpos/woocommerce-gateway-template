@@ -47,11 +47,12 @@ validate_input "Repository name" "$REPO_NAME"
 read -p "Enter author name: " AUTHOR_NAME
 validate_input "Author name" "$AUTHOR_NAME"
 
-read -p "Enter target directory path (or press Enter for current directory): " TARGET_DIR
+DEFAULT_DIR="$(dirname "$SCRIPT_DIR")"
+read -p "Enter target directory path (or press Enter for '$DEFAULT_DIR'): " TARGET_DIR
 
 # Set default target directory if not provided
 if [ -z "$TARGET_DIR" ]; then
-    TARGET_DIR="."
+    TARGET_DIR="$DEFAULT_DIR"
 fi
 
 # Create target directory
