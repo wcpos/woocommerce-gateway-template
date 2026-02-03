@@ -1,4 +1,4 @@
-# Copyright (C) 2025 {{AUTHOR_NAME}}
+# Copyright (C) 2026 {{AUTHOR_NAME}}
 # This file is distributed under the GNU General Public License v3.0.
 msgid ""
 msgstr ""
@@ -9,7 +9,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2025-10-01T14:10:14+00:00\n"
+"POT-Creation-Date: 2026-02-03T22:45:44+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: woocommerce-pos-{{GATEWAY_SLUG}}-gateway\n"
@@ -34,30 +34,26 @@ msgstr ""
 msgid "{{AUTHOR_NAME}}"
 msgstr ""
 
-#: wcpos-{{GATEWAY_SLUG}}.php:57
+#: wcpos-{{GATEWAY_SLUG}}.php:62
 msgid "Title"
 msgstr ""
 
-#: wcpos-{{GATEWAY_SLUG}}.php:59
+#: wcpos-{{GATEWAY_SLUG}}.php:64
 msgid "This controls the title which the user sees during checkout."
 msgstr ""
 
-#: wcpos-{{GATEWAY_SLUG}}.php:60
+#: wcpos-{{GATEWAY_SLUG}}.php:65
 msgid "{{GATEWAY_NAME}}"
 msgstr ""
 
-#: wcpos-{{GATEWAY_SLUG}}.php:64
+#: wcpos-{{GATEWAY_SLUG}}.php:69
 msgid "Description"
 msgstr ""
 
-#: wcpos-{{GATEWAY_SLUG}}.php:66
+#: wcpos-{{GATEWAY_SLUG}}.php:71
 msgid "This controls the description which the user sees during checkout."
 msgstr ""
 
-#: wcpos-{{GATEWAY_SLUG}}.php:67
+#: wcpos-{{GATEWAY_SLUG}}.php:72
 msgid "{{GATEWAY_DEFAULT_DESCRIPTION}}"
-msgstr ""
-
-#: wcpos-{{GATEWAY_SLUG}}.php:81
-msgid "Awaiting payment"
 msgstr ""
