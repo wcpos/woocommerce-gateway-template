@@ -33,7 +33,7 @@ jobs:
       - name: Build ZIP
         if: steps.check_version.outputs.release == 'true'
         run: |
-          zip -r woocommerce-pos-{{GATEWAY_SLUG}}-gateway.zip . \
+          zip -r "woocommerce-pos-{{GATEWAY_SLUG}}-gateway.zip" . \
             -x "*.git*" \
             -x "create-gateway.sh" \
             -x "demo.sh" \
