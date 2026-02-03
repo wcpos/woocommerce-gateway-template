@@ -20,7 +20,7 @@ escape_sed() {
 # --- Collect input ---
 
 # Gateway name is the only required field
-read -p "Enter gateway name (e.g., 'Cash Payment'): " GATEWAY_NAME
+read -rp "Enter gateway name (e.g., 'Cash Payment'): " GATEWAY_NAME
 if [ -z "$GATEWAY_NAME" ]; then
     echo "Error: Gateway name is required."
     exit 1
@@ -29,21 +29,27 @@ fi
 # Auto-generate slug from name: lowercase, spaces to hyphens, strip non-alphanumeric
 AUTO_SLUG=$(echo "$GATEWAY_NAME" | tr '[:upper:]' '[:lower:]' | sed 's/[^a-z0-9 ]//g' | tr ' ' '-' | sed 's/--*/-/g' | sed 's/^-//;s/-$//')
 
-read -p "Enter gateway slug [$AUTO_SLUG]: " GATEWAY_SLUG
+read -rp "Enter gateway slug [$AUTO_SLUG]: " GATEWAY_SLUG
 GATEWAY_SLUG="${GATEWAY_SLUG:-$AUTO_SLUG}"
 
-read -p "Enter gateway description (optional): " GATEWAY_DESCRIPTION
-read -p "Enter default checkout description (optional): " GATEWAY_DEFAULT_DESCRIPTION
-read -p "Enter your GitHub username (optional): " GITHUB_USERNAME
+# Validate slug format (lowercase alphanumeric with hyphens only)
+if [[ ! "$GATEWAY_SLUG" =~ ^[a-z0-9]+(-[a-z0-9]+)*$ ]]; then
+    echo "Error: Gateway slug must be lowercase alphanumeric with hyphens (e.g., 'cash-payment')."
+    exit 1
+fi
+
+read -rp "Enter gateway description (optional): " GATEWAY_DESCRIPTION
+read -rp "Enter default checkout description (optional): " GATEWAY_DEFAULT_DESCRIPTION
+read -rp "Enter your GitHub username (optional): " GITHUB_USERNAME
 
 AUTO_REPO="$GATEWAY_SLUG-gateway"
-read -p "Enter repository name [$AUTO_REPO]: " REPO_NAME
+read -rp "Enter repository name [$AUTO_REPO]: " REPO_NAME
 REPO_NAME="${REPO_NAME:-$AUTO_REPO}"
 
-read -p "Enter author name (optional): " AUTHOR_NAME
+read -rp "Enter author name (optional): " AUTHOR_NAME
 
 DEFAULT_DIR="$(dirname "$SCRIPT_DIR")"
-read -p "Enter target directory path [$DEFAULT_DIR]: " TARGET_DIR
+read -rp "Enter target directory path [$DEFAULT_DIR]: " TARGET_DIR
 TARGET_DIR="${TARGET_DIR:-$DEFAULT_DIR}"
 
 # --- Derive values ---

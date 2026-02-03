@@ -80,6 +80,10 @@ function woocommerce_pos_{{GATEWAY_FUNCTION_PREFIX}}_gateway_init() {
 		public function process_payment( $order_id ) {
 			$order = wc_get_order( $order_id );
 
+			if ( ! $order ) {
+				return array( 'result' => 'failure' );
+			}
+
 			// Mark the order as paid.
 			// This handles stock reduction and order status automatically.
 			$order->payment_complete();

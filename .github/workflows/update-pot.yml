@@ -29,7 +29,7 @@ jobs:
 
     - name: Generate POT file
       run: |
-        wp i18n make-pot . languages/woocommerce-pos-{{GATEWAY_SLUG}}-gateway.pot \
+        wp i18n make-pot . "languages/woocommerce-pos-{{GATEWAY_SLUG}}-gateway.pot" \
           --slug="woocommerce-pos-{{GATEWAY_SLUG}}-gateway" \
           --domain="woocommerce-pos-{{GATEWAY_SLUG}}-gateway" \
           --exclude="node_modules,vendor,tests" || true

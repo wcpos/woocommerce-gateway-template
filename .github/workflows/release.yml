@@ -46,4 +46,4 @@ jobs:
         with:
           tag_name: v${{ env.VERSION }}
           name: Release v${{ env.VERSION }}
-          files: woocommerce-pos-{{GATEWAY_SLUG}}-gateway.zip
+          files: "woocommerce-pos-{{GATEWAY_SLUG}}-gateway.zip"
